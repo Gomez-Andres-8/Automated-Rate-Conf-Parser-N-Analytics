@@ -26,6 +26,8 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
 	pdf_bytes = uploaded_file.getvalue()
+	
+	st.write(f"Uploaded file size: {len(pdf_bytes)} bytes") # Debug checker
 
 	if not pdf_bytes.startswith(b"%PDF"):
 		st.error("Uploaded file is not a valid PDF.")
@@ -35,16 +37,17 @@ if uploaded_file is not None:
 		tmp.write(pdf_bytes)
 		tmp_path = tmp.name
 
-		with st.spinner("Extracting and parsing rate confirmation..."):
-			file_size = Path(tmp_path).stat().st_size
+	with st.spinner("Extracting and parsing rate confirmation..."):
+		file_size = Path(tmp_path).stat().st_size # Debug checker
+		
+		st.write(f"Temp PDF size: {file_size} bytes") # Debug checker
+		
+		with open(tmp_path, "rb") as f: # Debug checker
+			header = f.read(8) # Debug checker
+		
+		st.write(f"PDF header: {header}") # Debug checker
 
-			st.write(f"Temp PDF size: {file_size} bytes")
-
-			with open(tmp_path, "rb") as f:
-			    header = f.read(8)
-			st.write(f"PDF header: {header}")
-
-			parsed_result =  extract_text.extract_and_parse_pdf(tmp_path)
+		parsed_result =  extract_text.extract_and_parse_pdf(tmp_path)
 
 		extracted = parsed_result.get("fields", {})
 		raw_text = parsed_result.get("raw_text", "")

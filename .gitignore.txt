@@ -1,6 +1,7 @@
-jj-ratecon-app/.streamlit/secrets.toml
 __pycache__/
 .env
+**/.env
 *.pdf
 git_instructions.txt
 .streamlit/secrets.toml
+**/.streamlit/secrets.toml

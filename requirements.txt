@@ -8,3 +8,4 @@ pillow
 python-dotenv
 pdfplumber
 pathlib
+extract_text

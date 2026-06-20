@@ -3,7 +3,6 @@ from datetime import date, time
 
 from pathlib import Path
 import streamlit as st
-# from st_copy_button import copy_button
 from st_copy_button import st_copy_button
 
 import extract_text
@@ -38,11 +37,6 @@ if uploaded_file is not None:
 		tmp_path = tmp.name
 
 	with st.spinner("Extracting and parsing rate confirmation..."):
-		
-		with open(tmp_path, "rb") as f: # Debug checker
-			header = f.read(8) # Debug checker
-		
-		st.write(f"PDF header: {header}") # Debug checker
 
 		parsed_result =  extract_text.extract_and_parse_pdf(tmp_path)
 
@@ -50,7 +44,7 @@ if uploaded_file is not None:
 		raw_text = parsed_result.get("raw_text", "")
 		extraction_method = parsed_result.get("extraction_method", "unknown")
 
-		st.success(f"PDF extracted using: {extraction_method}")
+		st.success(f"PDF extracted successfully using: {extraction_method}")
 
 		with st.expander("View raw extracted text"):
 			st.text_area("Raw text", raw_text, height = 300)

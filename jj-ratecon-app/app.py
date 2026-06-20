@@ -1,6 +1,7 @@
 import tempfile
 from datetime import date, time
 
+from pathlib import Path
 import streamlit as st
 # from st_copy_button import copy_button
 from st_copy_button import st_copy_button
@@ -38,7 +39,7 @@ if uploaded_file is not None:
 			file_size = Path(tmp_path).stat().st_size
 
 			st.write(f"Temp PDF size: {file_size} bytes")
-			
+
 			with open(tmp_path, "rb") as f:
 			    header = f.read(8)
 			st.write(f"PDF header: {header}")

@@ -1,5 +1,5 @@
 def generate_driver_message(load: dict) -> str:
-    driver_name = load.get("driver_name") or "Driver"
+    driver_name = load.get("driver_name") or "N/A"
     truck_number = load.get("truck_number") or "N/A"
     trailer_number = load.get("trailer_number") or "N/A"
     
@@ -50,7 +50,7 @@ Commodity: {commodity}
 Weight: {weight_lbs} lbs
 
 Instructions:
-  Por favor confirmar una vez cargado y enviar BOL cuando esté disponible.
+    Por favor confirmar una vez cargado y enviar BOL cuando esté disponible.
 
     """
 

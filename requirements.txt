@@ -7,4 +7,3 @@ pytesseract
 pillow
 python-dotenv
 pdfplumber
-tesseract-ocr

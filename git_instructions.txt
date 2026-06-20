@@ -1,0 +1,17 @@
+Make changes in Dev branch
+
+```
+git checkout dev
+# make changes
+git add .
+git commit -m "Test new parsing form"
+git push
+```
+
+Once Dev works
+
+```
+git checkout main
+git merge dev
+git push
+```

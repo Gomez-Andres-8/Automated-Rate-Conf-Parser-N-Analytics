@@ -1,4 +1,4 @@
-.streamlit/secrets.toml
+jj-ratecon-app/.streamlit/secrets.toml
 __pycache__/
 .env
 *.pdf

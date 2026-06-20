@@ -38,9 +38,6 @@ if uploaded_file is not None:
 		tmp_path = tmp.name
 
 	with st.spinner("Extracting and parsing rate confirmation..."):
-		file_size = Path(tmp_path).stat().st_size # Debug checker
-		
-		st.write(f"Temp PDF size: {file_size} bytes") # Debug checker
 		
 		with open(tmp_path, "rb") as f: # Debug checker
 			header = f.read(8) # Debug checker

@@ -41,18 +41,19 @@ def parse_fields(raw_text: str) -> dict:
     return {}
 
 def extract_and_parse_pdf(pdf_path: str) -> dict:
-    pdf_path = Path(pdf_path)
+    pdf_path = Path(pdf_path) # Convert to Path object
 
-    if not pdf_path.exists():
+    if not pdf_path.exists(): # Check if the file exists
         raise FileNotFoundError(
             f"Could not find {pdf_path}. Please upload rate confirmation PDF."
         )
 
-    if pdf_path.stat().st_size == 0:
+    if pdf_path.stat().st_size == 0: # Check if the file is empty
         raise ValueError(
             f"PDF file {pdf_path} is empty."
         )
     
+    # Check if the file is a valid PDF
     with open(pdf_path, "rb") as f:
         header = f.read(5)
     

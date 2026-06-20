@@ -48,6 +48,19 @@ def extract_and_parse_pdf(pdf_path: str) -> dict:
             f"Could not find {pdf_path}. Please upload rate confirmation PDF."
         )
 
+    if pdf_path.stat().st_size == 0:
+        raise ValueError(
+            f"PDF file {pdf_path} is empty."
+        )
+    
+    with open(pdf_path, "rb") as f:
+        header = f.read(5)
+    
+    if header != b"%PDF-":
+        raise ValueError(
+            f"File {pdf_path} is not a valid PDF. Header found: {header}"
+        )
+
     print(f"Extracting text from {str(pdf_path).split('/')[-1]}...")
 
     raw_text = extract_pdf_text(pdf_path)

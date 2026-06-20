@@ -227,20 +227,18 @@ if uploaded_file is not None:
 			"parser_status" : "reviewed"
 		}
 
-		driver_message = generate_driver_message(load_data)
+		driver_message = generate_driver_message(load_data) # Generate the driver message -> str
 		load_data["driver_message"] = driver_message
 
 		st.subheader("Driver Message Review")
 		copyable_text = st.text_area("Copyable Driver Message", driver_message, height = 575)
-		# copy_button(copyable_text)
 		
+		# Would like to add a duration to the after copy label
 		st_copy_button(
 			copyable_text,
 			before_copy_label = "Copy Message For Driver",
 			after_copy_label = "Copied! Make Sure to Save to Database"
 		)
-
-		# st.text_area("Copyable Driver Message", driver_message, height = 650)
 
 		if st.button("Save Load To Database"):
 			# Here you might want to save the load_data to a database or a file

@@ -18,7 +18,7 @@ def insert_load(load_data: dict) -> dict:
 		.execute()
 	)
 
-	if not response_date:
+	if not response:
 		raise RuntimeError("Load was not saved to Supabase.")
 
 	return response.data[0]

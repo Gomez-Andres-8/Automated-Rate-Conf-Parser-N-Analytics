@@ -23,7 +23,7 @@ uploaded_file = st.file_uploader(
 	type = ["pdf"]
 )
 
-if uploaded_file:
+if uploaded_file is not None:
 	with tempfile.NamedTemporaryFile(delete = False, suffix = ".pdf") as tmp:
 		tmp.write(uploaded_file.read())
 		tmp_path = tmp.name

@@ -29,12 +29,20 @@ if uploaded_file is not None:
 	if not pdf_bytes.startswith(b"%PDF"):
 		st.error("Uploaded file is not a valid PDF.")
 		st.stop()
-		
+
 	with tempfile.NamedTemporaryFile(delete = False, suffix = ".pdf") as tmp:
 		tmp.write(pdf_bytes)
 		tmp_path = tmp.name
 
 		with st.spinner("Extracting and parsing rate confirmation..."):
+			file_size = Path(tmp_path).stat().st_size
+
+			st.write(f"Temp PDF size: {file_size} bytes")
+			
+			with open(tmp_path, "rb") as f:
+			    header = f.read(8)
+			st.write(f"PDF header: {header}")
+
 			parsed_result =  extract_text.extract_and_parse_pdf(tmp_path)
 
 		extracted = parsed_result.get("fields", {})

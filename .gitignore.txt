@@ -1,7 +1,19 @@
+# Python
 __pycache__/
+
+# Local env/secrets
 .env
 **/.env
-*.pdf
-git_instructions.txt
 .streamlit/secrets.toml
 **/.streamlit/secrets.toml
+*.toml
+
+# PDFs
+*.pdf
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Notes
+git_instructions.txt
